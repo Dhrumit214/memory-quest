@@ -4,7 +4,7 @@ import GameStats from "./GameStats";
 import Confetti from "./Confetti";
 import { toast } from "sonner";
 
-const SYMBOLS = ["🎮", "🎲", "🎯", "🎨", "🎭", "🎪", "🎢", "🎡"];
+const SYMBOLS = ["🎮", "🎲", "🎯", "🎨", "🎭", "🎪", "🎢", "🎡", "🎠", "🎪", "🎨", "🎭", "🎯", "🎲", "🎮", "🎡", "🎢", "🎪", "🎨", "🎭", "🎯", "🎲", "🎮", "🎡", "🎢", "🎪", "🎨", "🎭", "🎯", "🎲", "🎮", "🎡"];
 
 interface Card {
   id: number;
@@ -13,7 +13,12 @@ interface Card {
   isMatched: boolean;
 }
 
-const MemoryGame = () => {
+interface MemoryGameProps {
+  gridSize: number;
+  onBackToHome: () => void;
+}
+
+const MemoryGame = ({ gridSize, onBackToHome }: MemoryGameProps) => {
   const [cards, setCards] = useState<Card[]>([]);
   const [moves, setMoves] = useState(0);
   const [matches, setMatches] = useState(0);
@@ -22,7 +27,9 @@ const MemoryGame = () => {
   const [showConfetti, setShowConfetti] = useState(false);
 
   const initializeGame = () => {
-    const shuffledCards = [...SYMBOLS, ...SYMBOLS]
+    const numPairs = (gridSize * gridSize) / 2;
+    const gameSymbols = SYMBOLS.slice(0, numPairs);
+    const shuffledCards = [...gameSymbols, ...gameSymbols]
       .sort(() => Math.random() - 0.5)
       .map((value, index) => ({
         id: index,
@@ -39,7 +46,7 @@ const MemoryGame = () => {
 
   useEffect(() => {
     initializeGame();
-  }, []);
+  }, [gridSize]);
 
   const handleCardClick = (clickedId: number) => {
     if (isChecking || cards[clickedId].isFlipped || cards[clickedId].isMatched) {
@@ -62,7 +69,7 @@ const MemoryGame = () => {
         setCards(newCards);
         setMatches((prev) => {
           const newMatches = prev + 1;
-          if (newMatches === SYMBOLS.length) {
+          if (newMatches === cards.length / 2) {
             setShowConfetti(true);
             toast("Congratulations! You've won! 🎉");
           }
@@ -83,8 +90,13 @@ const MemoryGame = () => {
 
   return (
     <div className="w-full max-w-2xl mx-auto p-4">
-      <GameStats moves={moves} matches={matches} onReset={initializeGame} />
-      <div className="grid grid-cols-4 gap-4">
+      <GameStats moves={moves} matches={matches} onReset={initializeGame} onBackToHome={onBackToHome} />
+      <div 
+        className="grid gap-4"
+        style={{
+          gridTemplateColumns: `repeat(${gridSize}, minmax(0, 1fr))`,
+        }}
+      >
         {cards.map((card) => (
           <Card
             key={card.id}
