@@ -31,9 +31,16 @@ const MemoryGame = ({ gridSize, onBackToHome }: MemoryGameProps) => {
 
   const initializeGame = () => {
     const totalCards = gridSize * gridSize;
-    const numPairs = totalCards / 2;
+    const numPairs = Math.ceil(totalCards / 2);
     const gameSymbols = SYMBOLS.slice(0, numPairs);
-    const shuffledCards = [...gameSymbols, ...gameSymbols]
+    let shuffledCards = [...gameSymbols, ...gameSymbols];
+    
+    // If we have an odd number of total cards, remove the last duplicate
+    if (totalCards % 2 !== 0) {
+      shuffledCards.pop();
+    }
+    
+    shuffledCards = shuffledCards
       .sort(() => Math.random() - 0.5)
       .map((value, index) => ({
         id: index,
@@ -41,6 +48,7 @@ const MemoryGame = ({ gridSize, onBackToHome }: MemoryGameProps) => {
         isFlipped: false,
         isMatched: false,
       }));
+
     setCards(shuffledCards);
     setMoves(0);
     setMatches(0);
@@ -73,7 +81,7 @@ const MemoryGame = ({ gridSize, onBackToHome }: MemoryGameProps) => {
         setCards(newCards);
         setMatches((prev) => {
           const newMatches = prev + 1;
-          if (newMatches === cards.length / 2) {
+          if (newMatches === Math.floor(cards.length / 2)) {
             setShowConfetti(true);
             toast("Congratulations! You've won! 🎉");
           }
