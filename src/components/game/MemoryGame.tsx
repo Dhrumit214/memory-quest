@@ -33,14 +33,14 @@ const MemoryGame = ({ gridSize, onBackToHome }: MemoryGameProps) => {
     const totalCards = gridSize * gridSize;
     const numPairs = Math.ceil(totalCards / 2);
     const gameSymbols = SYMBOLS.slice(0, numPairs);
-    let shuffledCards = [...gameSymbols, ...gameSymbols];
+    let cardPairs = [...gameSymbols, ...gameSymbols];
     
     // If we have an odd number of total cards, remove the last duplicate
     if (totalCards % 2 !== 0) {
-      shuffledCards.pop();
+      cardPairs.pop();
     }
     
-    shuffledCards = shuffledCards
+    const shuffledCards: Card[] = cardPairs
       .sort(() => Math.random() - 0.5)
       .map((value, index) => ({
         id: index,
