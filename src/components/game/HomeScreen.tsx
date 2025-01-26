@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Label } from "@/components/ui/label";
 
 interface HomeScreenProps {
   onStartGame: (gridSize: number) => void;
@@ -9,7 +8,6 @@ interface HomeScreenProps {
 
 const HomeScreen = ({ onStartGame }: HomeScreenProps) => {
   const [difficulty, setDifficulty] = useState("easy");
-  const [customSize, setCustomSize] = useState("4");
 
   const handleStartGame = () => {
     let gridSize: number;
@@ -23,8 +21,8 @@ const HomeScreen = ({ onStartGame }: HomeScreenProps) => {
       case "hard":
         gridSize = 8;
         break;
-      case "custom":
-        gridSize = Math.min(Math.max(parseInt(customSize) || 4, 2), 10);
+      case "superhard":
+        gridSize = 10;
         break;
       default:
         gridSize = 4;
@@ -55,25 +53,10 @@ const HomeScreen = ({ onStartGame }: HomeScreenProps) => {
           <Label htmlFor="hard">Hard (8x8 grid - 64 cards)</Label>
         </div>
         <div className="flex items-center space-x-2">
-          <RadioGroupItem value="custom" id="custom" />
-          <Label htmlFor="custom">Custom</Label>
+          <RadioGroupItem value="superhard" id="superhard" />
+          <Label htmlFor="superhard">Super Hard (10x10 grid - 100 cards)</Label>
         </div>
       </RadioGroup>
-
-      {difficulty === "custom" && (
-        <div className="mb-6">
-          <Label htmlFor="gridSize">Grid Size (2-10)</Label>
-          <Input
-            id="gridSize"
-            type="number"
-            min="2"
-            max="10"
-            value={customSize}
-            onChange={(e) => setCustomSize(e.target.value)}
-            className="mt-1"
-          />
-        </div>
-      )}
 
       <button
         onClick={handleStartGame}
