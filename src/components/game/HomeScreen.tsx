@@ -16,13 +16,13 @@ const HomeScreen = ({ onStartGame }: HomeScreenProps) => {
         gridSize = 4;
         break;
       case "medium":
-        gridSize = 6;
+        gridSize = 5;
         break;
       case "hard":
-        gridSize = 8;
+        gridSize = 6;
         break;
       case "superhard":
-        gridSize = 10;
+        gridSize = 8;
         break;
       default:
         gridSize = 4;
@@ -46,15 +46,15 @@ const HomeScreen = ({ onStartGame }: HomeScreenProps) => {
         </div>
         <div className="flex items-center space-x-2">
           <RadioGroupItem value="medium" id="medium" />
-          <Label htmlFor="medium">Medium (6x6 grid - 36 cards)</Label>
+          <Label htmlFor="medium">Medium (5x5 grid - 25 cards)</Label>
         </div>
         <div className="flex items-center space-x-2">
           <RadioGroupItem value="hard" id="hard" />
-          <Label htmlFor="hard">Hard (8x8 grid - 64 cards)</Label>
+          <Label htmlFor="hard">Hard (6x6 grid - 36 cards)</Label>
         </div>
         <div className="flex items-center space-x-2">
           <RadioGroupItem value="superhard" id="superhard" />
-          <Label htmlFor="superhard">Super Hard (10x10 grid - 100 cards)</Label>
+          <Label htmlFor="superhard">Super Hard (8x8 grid - 64 cards)</Label>
         </div>
       </RadioGroup>
 
