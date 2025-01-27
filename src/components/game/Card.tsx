@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import * as Icons from "lucide-react";
 
 interface CardProps {
   value: string;
@@ -8,6 +9,9 @@ interface CardProps {
 }
 
 const Card = ({ value, isFlipped, isMatched, onClick }: CardProps) => {
+  // Dynamically get the icon component from lucide-react
+  const IconComponent = (Icons as any)[value];
+
   return (
     <div
       className={cn(
@@ -20,11 +24,11 @@ const Card = ({ value, isFlipped, isMatched, onClick }: CardProps) => {
         <div className="memory-card-front absolute inset-0 bg-gradient-to-br from-blue-500 to-violet-500 rounded-lg shadow-lg" />
         <div
           className={cn(
-            "memory-card-back absolute inset-0 bg-white rounded-lg shadow-lg flex items-center justify-center text-2xl font-bold",
+            "memory-card-back absolute inset-0 bg-white rounded-lg shadow-lg flex items-center justify-center",
             isMatched && "bg-green-100"
           )}
         >
-          {value}
+          {IconComponent && <IconComponent size={32} />}
         </div>
       </div>
     </div>

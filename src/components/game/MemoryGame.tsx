@@ -6,18 +6,18 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Lightbulb, Wand2, Eye } from "lucide-react";
 
-// Define the symbols array using Lucide icon names
+// Define the symbols array using Lucide icon names with PascalCase
 const SYMBOLS = [
-  "star",
-  "diamond",
-  "circle",
-  "square",
-  "arrow-up",
-  "arrow-down",
-  "arrow-left",
-  "arrow-right",
-  "check",
-  "x"
+  "ArrowRight",
+  "Circle",
+  "Square",
+  "Star",
+  "Heart",
+  "Sun",
+  "Moon",
+  "Cloud",
+  "Check",
+  "X"
 ];
 
 interface Card {
