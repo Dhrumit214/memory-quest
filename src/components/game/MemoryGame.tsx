@@ -249,18 +249,21 @@ const MemoryGame = ({ gridSize, onBackToHome }: MemoryGameProps) => {
             gridTemplateColumns: `repeat(${gridSize}, minmax(0, 1fr))`,
             maxWidth: gridSize <= 4 ? "500px" : 
                      gridSize <= 5 ? "600px" : 
-                     gridSize <= 6 ? "700px" : "800px",
-            aspectRatio: "1/1"
+                     gridSize <= 6 ? "700px" : 
+                     gridSize <= 7 ? "800px" : "900px",
+            aspectRatio: "1/1",
+            margin: "0 auto"
           }}
         >
           {cards.map((card) => (
-            <Card
-              key={card.id}
-              value={card.value}
-              isFlipped={card.isFlipped}
-              isMatched={card.isMatched}
-              onClick={() => handleCardClick(card.id)}
-            />
+            <div key={card.id} className="aspect-square">
+              <Card
+                value={card.value}
+                isFlipped={card.isFlipped}
+                isMatched={card.isMatched}
+                onClick={() => handleCardClick(card.id)}
+              />
+            </div>
           ))}
         </div>
 
