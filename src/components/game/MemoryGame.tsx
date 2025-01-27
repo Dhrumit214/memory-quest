@@ -244,22 +244,23 @@ const MemoryGame = ({ gridSize, onBackToHome }: MemoryGameProps) => {
         </div>
 
         <div 
-          className="grid gap-2 w-full"
+          className="grid gap-2"
           style={{
+            display: 'grid',
             gridTemplateColumns: `repeat(${gridSize}, 1fr)`,
+            width: '100%',
             maxWidth: gridSize <= 4 ? "500px" : 
                      gridSize <= 5 ? "600px" : 
                      gridSize <= 6 ? "700px" : 
                      gridSize <= 7 ? "800px" : "900px",
             margin: "0 auto",
-            aspectRatio: "1/1"
+            aspectRatio: '1/1'
           }}
         >
           {cards.map((card) => (
             <div 
               key={card.id} 
-              className="w-full aspect-square"
-              style={{ minWidth: 0 }} // Prevents grid items from expanding
+              className="w-full h-full"
             >
               <Card
                 value={card.value}
