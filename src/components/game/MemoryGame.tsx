@@ -244,10 +244,13 @@ const MemoryGame = ({ gridSize, onBackToHome }: MemoryGameProps) => {
         </div>
 
         <div 
-          className="grid gap-2 mx-auto w-full"
+          className="grid gap-2 w-full"
           style={{
             gridTemplateColumns: `repeat(${gridSize}, minmax(0, 1fr))`,
-            maxWidth: gridSize <= 5 ? "500px" : gridSize <= 6 ? "600px" : "800px",
+            maxWidth: gridSize <= 4 ? "500px" : 
+                     gridSize <= 5 ? "600px" : 
+                     gridSize <= 6 ? "700px" : "800px",
+            aspectRatio: "1/1"
           }}
         >
           {cards.map((card) => (
