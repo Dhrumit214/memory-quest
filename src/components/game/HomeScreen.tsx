@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
-import { Brain, Cpu, Fire, Skull } from "lucide-react";
+import { Brain, Cpu, Zap, Skull } from "lucide-react";
 
 interface HomeScreenProps {
   onStartGame: (gridSize: number) => void;
@@ -60,7 +60,7 @@ const HomeScreen = ({ onStartGame }: HomeScreenProps) => {
         </div>
         <div className="flex items-center space-x-2">
           <RadioGroupItem value="hard" id="hard" />
-          <Fire className="w-5 h-5 text-orange-500 mr-2" />
+          <Zap className="w-5 h-5 text-orange-500 mr-2" />
           <Label htmlFor="hard">Hard (6x6 grid - 36 cards)</Label>
         </div>
         <div className="flex items-center space-x-2">
