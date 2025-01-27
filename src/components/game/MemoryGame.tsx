@@ -53,7 +53,7 @@ const MemoryGame = ({ gridSize, onBackToHome }: MemoryGameProps) => {
 
   const initializeGame = () => {
     const totalCards = gridSize * gridSize;
-    const numPairs = Math.ceil(totalCards / 2);
+    const numPairs = Math.floor(totalCards / 2);
     const gameSymbols = SYMBOLS.slice(0, numPairs);
     let cardPairs = [...gameSymbols, ...gameSymbols];
     
@@ -62,7 +62,7 @@ const MemoryGame = ({ gridSize, onBackToHome }: MemoryGameProps) => {
       cardPairs.pop();
     }
     
-    const shuffledCards: Card[] = cardPairs
+    const shuffledCards = cardPairs
       .sort(() => Math.random() - 0.5)
       .map((value, index) => ({
         id: index,
@@ -244,7 +244,7 @@ const MemoryGame = ({ gridSize, onBackToHome }: MemoryGameProps) => {
         </div>
 
         <div 
-          className="grid gap-2 mx-auto"
+          className="grid gap-2 mx-auto w-full"
           style={{
             gridTemplateColumns: `repeat(${gridSize}, minmax(0, 1fr))`,
             maxWidth: gridSize <= 5 ? "500px" : gridSize <= 6 ? "600px" : "800px",
