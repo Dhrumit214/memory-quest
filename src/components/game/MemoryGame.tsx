@@ -16,8 +16,30 @@ const SYMBOLS = [
   "Leaf",
   "Gem",
   "Smile",
-  "Drop"
-];
+  "Drop",
+  "Zap",
+  "Apple",
+  "Bird",
+  "Fish",
+  "Tree",
+  "Bell",
+  "Book",
+  "Car",
+  "Home",
+  "Gift",
+  "Cake",
+  "Cat",
+  "Dog",
+  "Eye",
+  "Flag",
+  "Key",
+  "Lock",
+  "Map",
+  "Phone",
+  "Ring",
+  "Ship",
+  "Watch"
+]; // Added more symbols for larger grids
 
 interface Card {
   id: number;
@@ -52,13 +74,9 @@ const MemoryGame = ({ gridSize, onBackToHome }: MemoryGameProps) => {
 
   const initializeGame = () => {
     const totalCards = gridSize * gridSize;
-    const numPairs = Math.floor(totalCards / 2);
+    const numPairs = totalCards / 2;
     const gameSymbols = SYMBOLS.slice(0, numPairs);
-    let cardPairs = [...gameSymbols, ...gameSymbols];
-    
-    if (totalCards % 2 !== 0) {
-      cardPairs.pop();
-    }
+    const cardPairs = [...gameSymbols, ...gameSymbols];
     
     const shuffledCards = cardPairs
       .sort(() => Math.random() - 0.5)
@@ -74,6 +92,11 @@ const MemoryGame = ({ gridSize, onBackToHome }: MemoryGameProps) => {
     setMatches(0);
     setFirstCard(null);
     setShowConfetti(false);
+    setPowerUpsUsed({
+      hint: false,
+      matchAll: false,
+      revealAll: false
+    });
   };
 
   useEffect(() => {
