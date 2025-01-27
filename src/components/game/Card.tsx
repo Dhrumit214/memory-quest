@@ -43,16 +43,16 @@ const Card = ({ value, isFlipped, isMatched, onClick }: CardProps) => {
   return (
     <div
       className={cn(
-        "memory-card cursor-pointer w-full pb-[100%] relative",
+        "memory-card cursor-pointer w-full h-full",
         isFlipped && "flipped"
       )}
       onClick={onClick}
     >
-      <div className="memory-card-inner absolute inset-0">
-        <div className="memory-card-front absolute inset-0 bg-gradient-to-br from-blue-500 to-violet-500 rounded-lg shadow-lg" />
+      <div className="memory-card-inner w-full h-full">
+        <div className="memory-card-front w-full h-full bg-gradient-to-br from-blue-500 to-violet-500 rounded-lg shadow-lg" />
         <div
           className={cn(
-            "memory-card-back absolute inset-0 bg-white rounded-lg shadow-lg flex items-center justify-center",
+            "memory-card-back w-full h-full bg-white rounded-lg shadow-lg flex items-center justify-center",
             isMatched && "bg-green-100"
           )}
         >
