@@ -246,17 +246,21 @@ const MemoryGame = ({ gridSize, onBackToHome }: MemoryGameProps) => {
         <div 
           className="grid gap-2 w-full"
           style={{
-            gridTemplateColumns: `repeat(${gridSize}, minmax(0, 1fr))`,
+            gridTemplateColumns: `repeat(${gridSize}, 1fr)`,
             maxWidth: gridSize <= 4 ? "500px" : 
                      gridSize <= 5 ? "600px" : 
                      gridSize <= 6 ? "700px" : 
                      gridSize <= 7 ? "800px" : "900px",
-            aspectRatio: "1/1",
-            margin: "0 auto"
+            margin: "0 auto",
+            aspectRatio: "1/1"
           }}
         >
           {cards.map((card) => (
-            <div key={card.id} className="aspect-square">
+            <div 
+              key={card.id} 
+              className="w-full aspect-square"
+              style={{ minWidth: 0 }} // Prevents grid items from expanding
+            >
               <Card
                 value={card.value}
                 isFlipped={card.isFlipped}
