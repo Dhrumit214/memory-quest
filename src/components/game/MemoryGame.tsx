@@ -7,11 +7,39 @@ import PowerUps from "./PowerUps";
 import GameGrid from "./GameGrid";
 
 const SYMBOLS = [
-  "Sun", "Moon", "Star", "Heart", "Cloud", "Flower", "Leaf", "Gem",
-  "Smile", "Drop", "Zap", "Apple", "Bird", "Fish", "Tree", "Bell",
-  "Book", "Car", "Home", "Gift", "Cake", "Cat", "Dog", "Eye",
-  "Flag", "Key", "Lock", "Map", "Phone", "Ring", "Ship", "Watch"
-];
+  "Sun",
+  "Moon",
+  "Star",
+  "Heart",
+  "Cloud",
+  "Flower",
+  "Leaf",
+  "Gem",
+  "Smile",
+  "Drop",
+  "Zap",
+  "Apple",
+  "Bird",
+  "Fish",
+  "Tree",
+  "Bell",
+  "Book",
+  "Car",
+  "Home",
+  "Gift",
+  "Cake",
+  "Cat",
+  "Dog",
+  "Eye",
+  "Flag",
+  "Key",
+  "Lock",
+  "Map",
+  "Phone",
+  "Ring",
+  "Ship",
+  "Watch"
+]; // Added more symbols for larger grids
 
 interface Card {
   id: number;
@@ -50,7 +78,6 @@ const MemoryGame = ({ gridSize, onBackToHome }: MemoryGameProps) => {
     const gameSymbols = SYMBOLS.slice(0, numPairs);
     const cardPairs = [...gameSymbols, ...gameSymbols];
     
-    // Ensure we have exactly the right number of cards for the grid
     const shuffledCards = cardPairs
       .sort(() => Math.random() - 0.5)
       .map((value, index) => ({
