@@ -46,9 +46,14 @@ const MemoryGame = ({ gridSize, onBackToHome }: MemoryGameProps) => {
 
   const initializeGame = () => {
     const totalCards = gridSize * gridSize;
-    const numPairs = totalCards / 2;
+    const numPairs = Math.floor(totalCards / 2);
     const gameSymbols = SYMBOLS.slice(0, numPairs);
-    const cardPairs = [...gameSymbols, ...gameSymbols];
+    let cardPairs = [...gameSymbols, ...gameSymbols];
+    
+    // If we need an odd number of cards (like in 5x5), add one more card
+    if (totalCards % 2 !== 0) {
+      cardPairs.push(SYMBOLS[numPairs]); // Add one more unique symbol
+    }
     
     // Ensure we have exactly the right number of cards for the grid
     const shuffledCards = cardPairs
