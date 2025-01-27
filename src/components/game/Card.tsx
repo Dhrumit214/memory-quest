@@ -12,6 +12,34 @@ const Card = ({ value, isFlipped, isMatched, onClick }: CardProps) => {
   // Dynamically get the icon component from lucide-react
   const IconComponent = (Icons as any)[value];
 
+  // Define icon colors based on the icon type
+  const getIconColor = () => {
+    switch (value) {
+      case "Sun":
+        return "#FFB800";
+      case "Moon":
+        return "#6B7280";
+      case "Star":
+        return "#FFD700";
+      case "Heart":
+        return "#FF4B6E";
+      case "Cloud":
+        return "#60A5FA";
+      case "Flower":
+        return "#EC4899";
+      case "Leaf":
+        return "#34D399";
+      case "Gem":
+        return "#8B5CF6";
+      case "Smile":
+        return "#F59E0B";
+      case "Drop":
+        return "#3B82F6";
+      default:
+        return "#6B7280";
+    }
+  };
+
   return (
     <div
       className={cn(
@@ -28,7 +56,13 @@ const Card = ({ value, isFlipped, isMatched, onClick }: CardProps) => {
             isMatched && "bg-green-100"
           )}
         >
-          {IconComponent && <IconComponent size={32} />}
+          {IconComponent && (
+            <IconComponent
+              size={32}
+              color={getIconColor()}
+              strokeWidth={1.5}
+            />
+          )}
         </div>
       </div>
     </div>

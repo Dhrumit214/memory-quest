@@ -8,16 +8,16 @@ import { Lightbulb, Wand2, Eye } from "lucide-react";
 
 // Define the symbols array using Lucide icon names with PascalCase
 const SYMBOLS = [
-  "ArrowRight",
-  "Circle",
-  "Square",
-  "Star",
-  "Heart",
   "Sun",
   "Moon",
+  "Star",
+  "Heart",
   "Cloud",
-  "Check",
-  "X"
+  "Flower",
+  "Leaf",
+  "Gem",
+  "Smile",
+  "Drop"
 ];
 
 interface Card {
