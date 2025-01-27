@@ -64,7 +64,10 @@ const PowerUps = ({
         setCards(resetCards);
       }, 2000);
 
-      setPowerUpsUsed(prev => ({ ...prev, hint: true }));
+      setPowerUpsUsed({
+        ...powerUpsUsed,
+        hint: true
+      });
       toast("Hint power-up used! A matching pair was revealed.");
     }
   };
@@ -94,7 +97,10 @@ const PowerUps = ({
 
     setCards(newCards);
     setFirstCard(null);
-    setPowerUpsUsed(prev => ({ ...prev, matchAll: true }));
+    setPowerUpsUsed({
+      ...powerUpsUsed,
+      matchAll: true
+    });
     toast("Match All power-up used! All matching cards were paired.");
   };
 
@@ -118,7 +124,10 @@ const PowerUps = ({
       setCards(resetCards);
     }, 5000);
 
-    setPowerUpsUsed(prev => ({ ...prev, revealAll: true }));
+    setPowerUpsUsed({
+      ...powerUpsUsed,
+      revealAll: true
+    });
     toast("Reveal All power-up used! All cards are visible for 5 seconds.");
   };
 
