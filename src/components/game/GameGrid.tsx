@@ -26,6 +26,10 @@ const GameGrid = ({ gridSize, cards, onCardClick }: GameGridProps) => {
     return Math.floor(availableWidth / gridSize);
   };
 
+  // Ensure we have exactly gridSize * gridSize cards
+  const totalCards = gridSize * gridSize;
+  const displayCards = cards.slice(0, totalCards);
+
   return (
     <div className="w-full flex justify-center items-center p-4">
       <div
@@ -37,7 +41,7 @@ const GameGrid = ({ gridSize, cards, onCardClick }: GameGridProps) => {
           gap: '0.5rem',
         }}
       >
-        {cards.map((card) => (
+        {displayCards.map((card) => (
           <div
             key={card.id}
             style={{
