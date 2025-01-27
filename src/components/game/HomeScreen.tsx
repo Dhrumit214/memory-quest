@@ -33,12 +33,8 @@ const HomeScreen = ({ onStartGame }: HomeScreenProps) => {
 
   return (
     <div className="max-w-md mx-auto p-6 bg-white rounded-xl shadow-lg">
-      <div className="mb-6">
-        <img
-          src="/placeholder.svg"
-          alt="Memory Quest Logo"
-          className="w-32 h-32 mx-auto mb-4"
-        />
+      <div className="mb-6 flex flex-col items-center">
+        <Brain className="w-32 h-32 text-blue-500 animate-pulse" strokeWidth={1.5} />
       </div>
       <h2 className="text-2xl font-bold text-center mb-6 bg-gradient-to-r from-blue-500 to-violet-500 text-transparent bg-clip-text">
         Choose Difficulty Level
